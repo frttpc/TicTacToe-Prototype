@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class GameBoardManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private GameBoardManager instance;
+
+    private void Awake()
+    {
+        if (instance != null)
+            instance = this;
+        else
+            Debug.Log("A GameBoard Manager already exists!");
+    }
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    void CheckForAnyMatch()
     {
-        
+
     }
 }

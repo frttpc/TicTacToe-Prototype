@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Piece : MonoBehaviour
 {
-    enum Value { nullpiece, piece1, piece2, piece3 };
+    public int value;
+    private Color pieceColor;
 
+    public Piece()
+    {
+
+    }
 }
