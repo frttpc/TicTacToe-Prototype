@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
+    private int containingValue;
 
 }
