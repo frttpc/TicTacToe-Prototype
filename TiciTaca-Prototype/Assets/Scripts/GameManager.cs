@@ -14,6 +14,7 @@ public enum GameState
 public class GameManager : MonoBehaviour
 {
     public GameState state;
+    public GameObject gameBoard;
 
     void Start()
     {

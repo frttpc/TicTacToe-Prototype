@@ -7,7 +7,7 @@ using TMPro;
 public class Piece : MonoBehaviour
 {
     public Button button;
-    private bool isEnabled;
+    private bool isSelected = false;
     public int pieceValue;
     private Color pieceColor;
     public TextMeshProUGUI writtenPieceValue;
@@ -16,27 +16,5 @@ public class Piece : MonoBehaviour
     {
         pieceValue = value;
         pieceColor = color;
-    }
-
-    private void Start()
-    {
-        SetPieceValue(pieceValue);
-    }
-
-    private void SetPieceValue(int value)
-    {
-        writtenPieceValue.text = value.ToString();
-    }
-
-    private void DisablePiece()
-    {
-        button.interactable = false;
-        writtenPieceValue.enabled = false;
-    }
-
-    private void EnablePiece()
-    {
-        button.interactable = true;
-        writtenPieceValue.enabled = true;
     }
 }

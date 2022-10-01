@@ -6,4 +6,13 @@ public class Tile : MonoBehaviour
 {
     private int containingValue;
 
+    private void OnMouseDown()
+    {
+        Debug.Log("Yes " + name);
+    }
+
+    private void getContainingValue()
+    {
+
+    }
 }
