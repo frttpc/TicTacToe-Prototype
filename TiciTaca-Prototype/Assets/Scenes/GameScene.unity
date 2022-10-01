@@ -300,6 +300,30 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 236454627}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: getTheSelectedPieceValue
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PieceController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 282332596}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Piece, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
 --- !u!224 &49553758 stripped
@@ -1117,6 +1141,30 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 236454627}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: getTheSelectedPieceValue
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PieceController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1890456386}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Piece, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
 --- !u!224 &620359437 stripped
@@ -1318,6 +1366,30 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 236454627}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: getTheSelectedPieceValue
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PieceController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1893571649}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Piece, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
 --- !u!224 &966947922 stripped
@@ -1512,6 +1584,30 @@ PrefabInstance:
     - target: {fileID: 1946320038518881358, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1139625338}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: getTheSelectedPieceValue
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PieceController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1789614500}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Piece, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
@@ -2296,6 +2392,30 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1139625338}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: getTheSelectedPieceValue
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PieceController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 2120006210}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Piece, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
 --- !u!224 &2120006209 stripped
@@ -2504,6 +2624,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
@@ -2511,7 +2635,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1139625338}
     - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1139625338}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
@@ -2519,11 +2651,27 @@ PrefabInstance:
       value: getTheSelectedPieceValue
       objectReference: {fileID: 0}
     - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: getTheSelectedPieceValue
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: PieceController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PieceController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 850230824}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Piece, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028006550886114341, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []

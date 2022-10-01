@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PieceController : MonoBehaviour
 {
@@ -20,9 +21,9 @@ public class PieceController : MonoBehaviour
         }
     }
 
-    public void getTheSelectedPieceValue()
+    public void getTheSelectedPieceValue(Piece piece)
     {
-        
+        Debug.Log("Piece value is: " + piece.pieceValue);
     }
 
     private void DisablePiece(Piece piece)
