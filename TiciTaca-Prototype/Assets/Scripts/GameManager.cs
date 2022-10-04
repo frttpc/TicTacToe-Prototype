@@ -9,21 +9,47 @@ public enum GameState
     PLAYER2TURN,
     PLAYER1WON,
     PLAYER2WON,
+    DRAW
 }
 
 public class GameManager : MonoBehaviour
 {
     public GameState state;
     public GameObject gameBoard;
+    public PieceController player1PieceController;
+    public PieceController player2PieceController;
+    public RoundIndicatorController roundIndicatorController;
+    private int selectedPieceValue;
 
     void Start()
     {
         state = GameState.PLAYER1TURN;
         Player1Turn();
+        Debug.Log(state);
     }
 
     void Player1Turn()
     {
+        roundIndicatorController.changePositionOfRoundIndicator();
+        StartCoroutine(Player1Play());
+    }
 
+    IEnumerator Player1Play()
+    {
+        yield return new WaitUntil(player1PieceController.PieceIsSelected);
+        selectedPieceValue = player1PieceController.getSelectedPiece().pieceValue;
+
+        yield return new WaitUntil();
+    }
+
+    void Player2Turn()
+    {
+        roundIndicatorController.changePositionOfRoundIndicator();
+        StartCoroutine(Player2Play());
+    }
+
+    IEnumerator Player2Play()
+    {
+        yield return null;
     }
 }

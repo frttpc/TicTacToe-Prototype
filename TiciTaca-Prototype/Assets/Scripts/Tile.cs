@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    private int containingValue;
+    public GameBoardManager gameBoardManager;
+    private bool isEmpty = false;
+    private int containingValue = 0;
 
     private void OnMouseDown()
     {
-        Debug.Log("Yes " + name);
+        Debug.Log("Clicked on " + name);
+
+        gameBoardManager.getClickedTile();
     }
 
-    private void getContainingValue()
+    public int getContainingValue()
     {
-
+        return containingValue;
     }
 }

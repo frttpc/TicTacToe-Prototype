@@ -18,11 +18,4 @@ public class Piece : MonoBehaviour
         pieceValue = value;
         pieceColor = color;
     }
-
-    public void getPieceValue()
-    {
-        button.Select();
-    }
-
-
 }
