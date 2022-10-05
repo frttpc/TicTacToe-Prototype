@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class PieceController : MonoBehaviour
 {
     public GameManager gameManager;
+    public GameBoardManager gameBoardManager;
     public Piece[] pieces;
     private Piece selectedPiece;
 

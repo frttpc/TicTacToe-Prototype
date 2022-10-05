@@ -16,15 +16,15 @@ public class GameManager : MonoBehaviour
 {
     public GameState state;
     public GameObject gameBoard;
+    public GameObject piecePrefab;
     public PieceController player1PieceController;
     public PieceController player2PieceController;
     public RoundIndicatorController roundIndicatorController;
-    private int selectedPieceValue;
 
     void Start()
     {
         state = GameState.PLAYER1TURN;
-        Player1Turn();
+        //Player1Turn();
         Debug.Log(state);
     }
 
@@ -37,9 +37,8 @@ public class GameManager : MonoBehaviour
     IEnumerator Player1Play()
     {
         yield return new WaitUntil(player1PieceController.PieceIsSelected);
-        selectedPieceValue = player1PieceController.getSelectedPiece().pieceValue;
 
-        yield return new WaitUntil();
+        //yield return new WaitUntil();
     }
 
     void Player2Turn()

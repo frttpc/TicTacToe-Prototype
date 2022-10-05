@@ -4,27 +4,30 @@ using UnityEngine;
 
 public class GameBoardManager : MonoBehaviour
 {
-    private GameBoardManager instance;
     public GameManager gameManager;
+    private GameObject piece;
     public Tile[] tiles;
+    private int selectedPieceValue;
 
     void Start()
     {
-        if (instance != null)
-            instance = this;
-        else
-            Debug.Log("A GameBoard Manager already exists!");
+        piece = gameManager.piecePrefab;
     }
 
-    public void PutSelectedPieceOnClickedTile(Tile tile, Piece piece)
+    public void CreateSelectedPieceOnClickedTile(GameObject tile)
     {
-        Instantiate(piece,tile.transform);
-
+        Instantiate(piece, tile.transform);
     }
 
-    public void getClickedTile(Tile tile)
+    public void setSelectedPieceValue(Piece piece)
     {
+        Debug.Log("Selected piece is: " + piece.name);
+        selectedPieceValue = piece.pieceValue;
+    }
 
+    public int getSelectedPieceValue()
+    {
+        return selectedPieceValue;
     }
 
     void CheckForAnyMatch()

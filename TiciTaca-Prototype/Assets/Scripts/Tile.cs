@@ -6,17 +6,16 @@ public class Tile : MonoBehaviour
 {
     public GameBoardManager gameBoardManager;
     private bool isEmpty = false;
-    private int containingValue = 0;
+    private int containingValue;
 
     private void OnMouseDown()
     {
-        Debug.Log("Clicked on " + name);
-
-        gameBoardManager.getClickedTile();
+        Debug.Log("Clicked on " + gameObject.name);
+        gameBoardManager.CreateSelectedPieceOnClickedTile(gameObject);
     }
 
-    public int getContainingValue()
+    public void setContainingPiece(Piece piece)
     {
-        return containingValue;
+        containingValue = piece.pieceValue;
     }
 }
