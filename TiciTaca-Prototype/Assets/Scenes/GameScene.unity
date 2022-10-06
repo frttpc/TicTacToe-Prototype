@@ -611,7 +611,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1663084465}
-  gameBoardManager: {fileID: 0}
+  gameBoardManager: {fileID: 776097437}
   pieces:
   - {fileID: 1890456386}
   - {fileID: 1893571649}
@@ -1621,7 +1621,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1946320038055866003, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
       propertyPath: m_Name
-      value: Piece 2
+      value: Piece Button 2
       objectReference: {fileID: 0}
     - target: {fileID: 1946320038055866003, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1714,7 +1714,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1663084465}
-  gameBoardManager: {fileID: 0}
+  gameBoardManager: {fileID: 776097437}
   pieces:
   - {fileID: 850230824}
   - {fileID: 1789614500}
@@ -2462,7 +2462,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1946320038055866003, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
       propertyPath: m_Name
-      value: Piece 1
+      value: Piece Button 1
       objectReference: {fileID: 0}
     - target: {fileID: 1946320038055866003, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -2676,7 +2676,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1946320038055866003, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
       propertyPath: m_Name
-      value: Piece 3
+      value: Piece Button 3
       objectReference: {fileID: 0}
     - target: {fileID: 1946320038055866003, guid: 6723e169c3efa6b45b0852c3a389c671, type: 3}
       propertyPath: m_IsActive
