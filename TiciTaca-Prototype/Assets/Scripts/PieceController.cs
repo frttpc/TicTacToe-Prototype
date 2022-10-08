@@ -13,6 +13,7 @@ public class PieceController : MonoBehaviour
     private void Start()
     {
         SetPieceValuesInTheBeginning(pieces);
+        DisableAllPieceButtons();
     }
 
     private void SetPieceValuesInTheBeginning(Piece[] pieces)
@@ -39,21 +40,29 @@ public class PieceController : MonoBehaviour
         selectedPiece = null;
     }
 
-    public bool PieceIsSelected()
+    public void DisableAllPieceButtons()
     {
-        if (selectedPiece != null)
-            return true;
-        else
-            return false;
+        for (int i = 0; i < pieces.Length; i++)
+        {
+            DisablePieceButton(pieces[i]);
+        }
     }
 
-    public void DisablePiece(Piece piece)
+    public void EnableAllPieceButtons()
+    {
+        for (int i = 0; i < pieces.Length; i++)
+        {
+            EnablePieceButton(pieces[i]);
+        }
+    }
+
+    public void DisablePieceButton(Piece piece)
     {
         piece.button.interactable = false;
         piece.writtenPieceValue.enabled = false;
     }
 
-    public void EnablePiece(Piece piece)
+    public void EnablePieceButton(Piece piece)
     {
         piece.button.interactable = true;
         piece.writtenPieceValue.enabled = true;

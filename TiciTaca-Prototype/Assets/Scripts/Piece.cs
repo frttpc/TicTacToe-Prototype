@@ -8,14 +8,13 @@ using TMPro;
 public class Piece : MonoBehaviour
 {
     public Button button;
-    protected bool isSelected = false;
+    public TextMeshProUGUI writtenPieceValue;
+    private int pieceLeft = 2;
     public int pieceValue;
     private Color pieceColor;
-    public TextMeshProUGUI writtenPieceValue;
 
-    public Piece(Color color, int value)
+    public int getPieceLeft()
     {
-        pieceValue = value;
-        pieceColor = color;
+        return pieceLeft;
     }
 }

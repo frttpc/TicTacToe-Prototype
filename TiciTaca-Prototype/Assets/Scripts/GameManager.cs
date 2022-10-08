@@ -15,7 +15,7 @@ public enum GameState
 public class GameManager : MonoBehaviour
 {
     public GameState state;
-    public GameObject gameBoard;
+    public GameBoardManager gameBoardManager;
     public GameObject piecePrefab;
     public PieceController player1PieceController;
     public PieceController player2PieceController;
@@ -24,31 +24,38 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         state = GameState.PLAYER1TURN;
-        //Player1Turn();
-        Debug.Log(state);
+        Player1Turn();
     }
 
     void Player1Turn()
     {
-        roundIndicatorController.changePositionOfRoundIndicator();
+        roundIndicatorController.changePositionOfRoundIndicator(1);
         StartCoroutine(Player1Play());
     }
 
     IEnumerator Player1Play()
     {
-        yield return new WaitUntil(player1PieceController.PieceIsSelected);
+        player1PieceController.EnableAllPieceButtons();
+        yield return new WaitUntil(gameBoardManager.PieceIsPlayed); 
+        player1PieceController.DisableAllPieceButtons();
 
-        //yield return new WaitUntil();
+        state = GameState.PLAYER2TURN;
+        Player2Turn();
     }
 
     void Player2Turn()
     {
-        roundIndicatorController.changePositionOfRoundIndicator();
+        roundIndicatorController.changePositionOfRoundIndicator(2);
         StartCoroutine(Player2Play());
     }
 
     IEnumerator Player2Play()
     {
-        yield return null;
+        player2PieceController.EnableAllPieceButtons();
+        yield return new WaitUntil(gameBoardManager.PieceIsPlayed);
+        player2PieceController.DisableAllPieceButtons();
+
+        state = GameState.PLAYER1TURN;
+        Player1Turn();
     }
 }

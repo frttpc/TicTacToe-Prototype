@@ -5,11 +5,12 @@ using UnityEngine;
 public class Tile : MonoBehaviour
 {
     public GameBoardManager gameBoardManager;
+    public int tileIndex;
     private int containingValue;
 
     private void OnMouseDown()
     {
-        Debug.Log("Clicked on " + gameObject.name);
+        Debug.Log("Clicked on " + gameObject.name + " with Index: " + tileIndex);
         gameBoardManager.ClickedTile(this);
     }
 
@@ -21,5 +22,10 @@ public class Tile : MonoBehaviour
     public int getContainingValue()
     {
         return containingValue;
+    }
+
+    public void setContainingPlayedPieceValue(int value)
+    {
+        transform.GetChild(0).GetComponent<PlayedPiece>().setValueText(value);
     }
 }

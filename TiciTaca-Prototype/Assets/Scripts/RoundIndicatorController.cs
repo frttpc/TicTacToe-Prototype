@@ -7,17 +7,17 @@ public class RoundIndicatorController : MonoBehaviour
     private Vector2 player1RoundIndicatorPosition;
     private Vector2 player2RoundIndicatorPosition;
 
-    void Start()
+    private void Awake()
     {
         player1RoundIndicatorPosition = gameObject.transform.localPosition;
-        player2RoundIndicatorPosition = player1RoundIndicatorPosition + new Vector2(0,3f);
+        player2RoundIndicatorPosition = gameObject.transform.localPosition + new Vector3(0, 3);
     }
 
-    public void changePositionOfRoundIndicator()
+    public void changePositionOfRoundIndicator(int i)
     {
-        if (gameObject.transform.localPosition.y == player2RoundIndicatorPosition.y)
-            gameObject.transform.Translate(player1RoundIndicatorPosition);
+        if (i == 1)
+            gameObject.transform.localPosition = player1RoundIndicatorPosition;
         else
-            gameObject.transform.Translate(player2RoundIndicatorPosition);
+            gameObject.transform.localPosition = player2RoundIndicatorPosition;
     }
 }
