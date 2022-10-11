@@ -30,7 +30,7 @@ public class GameBoardManager : MonoBehaviour
         else
         {
             if (tile.getContainingValue() > 0)
-                tile.setContainingPlayedPieceValue(selectedPiece.pieceValue);
+                EditPlayedPiece(tile);
             else
                 CreateSelectedPieceOnClickedTile(tile);
 
@@ -40,6 +40,12 @@ public class GameBoardManager : MonoBehaviour
             selectedPieceController.resetSelectedPiece();
             pieceIsPlayed = true;
         }
+    }
+
+    private void EditPlayedPiece(Tile tile)
+    {
+        tile.setContainingPlayedPieceValue(selectedPiece.pieceValue);
+        tile.setContainingPlayedPieceColor(selectedPieceController.pieceColor);
     }
 
     private bool SelectedPieceValueIsBiggerThanContainingValue(Tile tile)

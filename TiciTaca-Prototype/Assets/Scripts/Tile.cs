@@ -28,6 +28,11 @@ public class Tile : MonoBehaviour
         transform.GetChild(0).GetComponent<PlayedPiece>().setValueText(value);
     }
 
+    public void setContainingPlayedPieceColor(Color color)
+    {
+        transform.GetChild(0).GetComponent<PlayedPiece>().ChangeColor(color);
+    }
+
     public void setLastPlayedBy(int playedBy)
     {
         lastPlayedBy = playedBy;

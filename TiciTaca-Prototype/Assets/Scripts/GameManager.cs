@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviour
     public GameObject piecePrefab;
     public PieceController player1PieceController;
     public PieceController player2PieceController;
-    public RoundIndicatorController roundIndicatorController;
 
     void Start()
     {
@@ -29,7 +28,6 @@ public class GameManager : MonoBehaviour
 
     void Player1Turn()
     {
-        roundIndicatorController.changePositionOfRoundIndicator(1);
         gameBoardManager.EditWhoseTurn(1,player1PieceController);
         StartCoroutine(Player1Play());
     }
@@ -46,7 +44,6 @@ public class GameManager : MonoBehaviour
 
     void Player2Turn()
     {
-        roundIndicatorController.changePositionOfRoundIndicator(2);
         gameBoardManager.EditWhoseTurn(2,player2PieceController);
         StartCoroutine(Player2Play());
     }
