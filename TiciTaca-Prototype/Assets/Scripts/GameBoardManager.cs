@@ -5,64 +5,55 @@ using UnityEngine;
 public class GameBoardManager : MonoBehaviour
 {
     public GameManager gameManager;
-    private GameObject piece;
-    private PlayedPiece played;
     public Tile[] tiles;
-    private int selectedPieceValue;
+    private PieceController selectedPieceController;
+    private GameObject piecePrefab;
+    private PlayedPiece playedPiece;
+    private Piece selectedPiece;
+    private int whoseTurn;
     private bool pieceIsPlayed;
 
     void Start()
     {
-        piece = gameManager.piecePrefab;
-        played = piece.GetComponent<PlayedPiece>();
+        piecePrefab = gameManager.piecePrefab;
+        playedPiece = piecePrefab.GetComponent<PlayedPiece>();
 
         pieceIsPlayed = false;
-        setTileIndexes();
-    }
-
-    public void setTileIndexes()
-    {
-        for(int i=0; i<tiles.Length; i++)
-        {
-            tiles[i].tileIndex = i+1;
-        }
-    }
-
-    public void setSelectedPieceValue(Piece piece)
-    {
-        selectedPieceValue = piece.pieceValue;
     }
 
     public void ClickedTile(Tile tile)
     {
-        if (selectedPieceValue == 0)
+        if (selectedPiece.pieceValue == 0)
             Debug.Log("Didn't select a piece to play");
         else if(!SelectedPieceValueIsBiggerThanContainingValue(tile))
             Debug.Log("Cannot put piece there!");
         else
         {
             if (tile.getContainingValue() > 0)
-                tile.setContainingPlayedPieceValue(selectedPieceValue);
+                tile.setContainingPlayedPieceValue(selectedPiece.pieceValue);
             else
                 CreateSelectedPieceOnClickedTile(tile);
 
-            tile.setContainingValue(selectedPieceValue);
+            EditTileOnClick(tile);
+
+            selectedPieceController.UsePiece();
+            selectedPieceController.resetSelectedPiece();
             pieceIsPlayed = true;
-            selectedPieceValue = 0;
         }
     }
 
     private bool SelectedPieceValueIsBiggerThanContainingValue(Tile tile)
     {
-        if (selectedPieceValue > tile.getContainingValue())
+        if (selectedPiece.pieceValue > tile.getContainingValue())
             return true;
         return false;
     }
 
     public void CreateSelectedPieceOnClickedTile(Tile tile)
     {
-        played.setValueText(selectedPieceValue);
-        Instantiate(piece, tile.transform);
+        playedPiece.setValueText(selectedPiece.pieceValue);
+        playedPiece.ChangeColor(selectedPieceController.pieceColor);
+        Instantiate(piecePrefab, tile.transform);
     }
 
     public bool PieceIsPlayed()
@@ -76,7 +67,24 @@ public class GameBoardManager : MonoBehaviour
             return false;
     }
 
-    void CheckForAnyMatch()
+    private void EditTileOnClick(Tile tile)
+    {
+        tile.setContainingValue(selectedPiece.pieceValue);
+        tile.setLastPlayedBy(whoseTurn);
+    }
+
+    public void EditWhoseTurn(int turnOfPlayer, PieceController pieceController)
+    {
+        whoseTurn = turnOfPlayer;
+        selectedPieceController = pieceController;
+    }
+
+    public void setSelectedPiece(Piece piece)
+    {
+        selectedPiece = piece;
+    }
+
+    void CheckForMatch()
     {
 
     }
