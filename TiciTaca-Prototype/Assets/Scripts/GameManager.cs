@@ -1,25 +1,33 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public enum GameState
 {
-    PLAYER1TURN,
-    PLAYER2TURN,
+    DRAW,
     PLAYER1WON,
-    PLAYER2WON,
-    DRAW
+    PLAYER2WON, 
+    PLAYER1TURN,
+    PLAYER2TURN
 }
 
 public class GameManager : MonoBehaviour
 {
     public GameState state;
-    public GameBoardManager gameBoardManager;
+    public GameObject gameBoard;
+    private GameBoardManager gameBoardManager;
     public GameObject piecePrefab;
+    public GameObject matchLinePrefab;
     public PieceController player1PieceController;
     public PieceController player2PieceController;
-    public RoundIndicatorController roundIndicatorController;
+    public GameObject player1WinScreen;
+    public GameObject player2WinScreen;
+    public GameObject drawScreen;
+
+    private void Awake()
+    {
+        gameBoardManager = gameBoard.GetComponent<GameBoardManager>();
+    }
 
     void Start()
     {
@@ -29,7 +37,6 @@ public class GameManager : MonoBehaviour
 
     void Player1Turn()
     {
-        roundIndicatorController.changePositionOfRoundIndicator(1);
         gameBoardManager.EditWhoseTurn(1,player1PieceController);
         StartCoroutine(Player1Play());
     }
@@ -40,13 +47,13 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(gameBoardManager.PieceIsPlayed); 
         player1PieceController.DisableAllPieceButtons();
 
-        state = GameState.PLAYER2TURN;
-        Player2Turn();
+        if (state == GameState.PLAYER1TURN)
+            state = GameState.PLAYER2TURN;
+        CallFunctionForState();
     }
 
     void Player2Turn()
     {
-        roundIndicatorController.changePositionOfRoundIndicator(2);
         gameBoardManager.EditWhoseTurn(2,player2PieceController);
         StartCoroutine(Player2Play());
     }
@@ -57,7 +64,43 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(gameBoardManager.PieceIsPlayed);
         player2PieceController.DisableAllPieceButtons();
 
-        state = GameState.PLAYER1TURN;
-        Player1Turn();
+        if (state == GameState.PLAYER2TURN)
+            state = GameState.PLAYER1TURN;
+        CallFunctionForState();
+    }
+
+    void CallFunctionForState()
+    {
+        if (state == GameState.PLAYER1TURN)
+            Player1Turn();
+        else if (state == GameState.PLAYER2TURN)
+            Player2Turn();
+        else if (state == GameState.PLAYER1WON)
+            StartCoroutine(Player1Won());
+        else if (state == GameState.PLAYER2WON)
+            StartCoroutine(Player2Won());
+        else
+            StartCoroutine(Draw());
+    }
+
+    IEnumerator Player1Won()
+    {
+        yield return new WaitForSeconds(1f);
+        player1WinScreen.SetActive(true);
+        gameBoard.SetActive(false);
+    }
+
+    IEnumerator Player2Won()
+    {
+        yield return new WaitForSeconds(1f);
+        player2WinScreen.SetActive(true);
+        gameBoard.SetActive(false);
+    }
+
+    IEnumerator Draw()
+    {
+        yield return new WaitForSeconds(1f);
+        drawScreen.SetActive(true);
+        gameBoard.SetActive(false);
     }
 }
