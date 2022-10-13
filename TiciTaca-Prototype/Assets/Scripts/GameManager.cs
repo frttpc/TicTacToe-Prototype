@@ -14,13 +14,20 @@ public enum GameState
 public class GameManager : MonoBehaviour
 {
     public GameState state;
-    public GameBoardManager gameBoardManager;
+    public GameObject gameBoard;
+    private GameBoardManager gameBoardManager;
     public GameObject piecePrefab;
+    public GameObject matchLinePrefab;
     public PieceController player1PieceController;
     public PieceController player2PieceController;
-    public Image player1WinScreen;
-    public Image player2WinScreen;
-    public Image drawScreen;
+    public GameObject player1WinScreen;
+    public GameObject player2WinScreen;
+    public GameObject drawScreen;
+
+    private void Awake()
+    {
+        gameBoardManager = gameBoard.GetComponent<GameBoardManager>();
+    }
 
     void Start()
     {
@@ -69,26 +76,31 @@ public class GameManager : MonoBehaviour
         else if (state == GameState.PLAYER2TURN)
             Player2Turn();
         else if (state == GameState.PLAYER1WON)
-            Player1Won();
+            StartCoroutine(Player1Won());
         else if (state == GameState.PLAYER2WON)
-            Player2Won();
+            StartCoroutine(Player2Won());
         else
-            Draw();
+            StartCoroutine(Draw());
     }
 
-    void Player1Won()
+    IEnumerator Player1Won()
     {
-        player1WinScreen.enabled = true;
+        yield return new WaitForSeconds(1f);
+        player1WinScreen.SetActive(true);
+        gameBoard.SetActive(false);
     }
 
-    void Player2Won()
+    IEnumerator Player2Won()
     {
-        player2WinScreen.enabled = true;
+        yield return new WaitForSeconds(1f);
+        player2WinScreen.SetActive(true);
+        gameBoard.SetActive(false);
     }
 
-    void Draw()
+    IEnumerator Draw()
     {
-        drawScreen.enabled = true;
+        yield return new WaitForSeconds(1f);
+        drawScreen.SetActive(true);
+        gameBoard.SetActive(false);
     }
-
 }

@@ -4,6 +4,7 @@ public class GameBoardManager : MonoBehaviour
 {
     public GameManager gameManager;
     public Tile[] tiles;
+    public GameObject[] lines;
     private PieceController selectedPieceController;
     private GameObject piecePrefab;
     private PlayedPiece playedPiece;
@@ -22,7 +23,7 @@ public class GameBoardManager : MonoBehaviour
 
     public void ClickedTile(Tile tile)
     {
-        if (selectedPiece.pieceValue == 0)
+        if (selectedPiece == null)
             Debug.Log("Didn't select a piece to play");
         else if(!SelectedPieceValueIsBiggerThanContainingValue(tile))
             Debug.Log("Cannot put piece there!");
@@ -36,7 +37,6 @@ public class GameBoardManager : MonoBehaviour
             EditClickedTile(tile);
 
             selectedPieceController.UsePiece();
-            selectedPieceController.resetSelectedPiece();
             turnCount++;
 
             if(turnCount > 4)
@@ -47,6 +47,7 @@ public class GameBoardManager : MonoBehaviour
                         CheckForDraw();
             }
             pieceIsPlayed = true;
+            selectedPiece = null;
         }
     }
 
@@ -100,26 +101,28 @@ public class GameBoardManager : MonoBehaviour
 
     void CheckForMatch()
     {
-        int s1 = tiles[0].getLastPlayedBy() + tiles[1].getLastPlayedBy() + tiles[2].getLastPlayedBy();
-        int s2 = tiles[3].getLastPlayedBy() + tiles[4].getLastPlayedBy() + tiles[5].getLastPlayedBy();
-        int s3 = tiles[6].getLastPlayedBy() + tiles[7].getLastPlayedBy() + tiles[8].getLastPlayedBy();
-        int s4 = tiles[0].getLastPlayedBy() + tiles[3].getLastPlayedBy() + tiles[6].getLastPlayedBy();
-        int s5 = tiles[1].getLastPlayedBy() + tiles[4].getLastPlayedBy() + tiles[7].getLastPlayedBy();
-        int s6 = tiles[2].getLastPlayedBy() + tiles[5].getLastPlayedBy() + tiles[8].getLastPlayedBy();
-        int s7 = tiles[0].getLastPlayedBy() + tiles[4].getLastPlayedBy() + tiles[8].getLastPlayedBy();
-        int s8 = tiles[2].getLastPlayedBy() + tiles[4].getLastPlayedBy() + tiles[6].getLastPlayedBy();
+        int s1 = tiles[1].getLastPlayedBy() + tiles[4].getLastPlayedBy() + tiles[7].getLastPlayedBy();
+        int s2 = tiles[2].getLastPlayedBy() + tiles[4].getLastPlayedBy() + tiles[6].getLastPlayedBy();
+        int s3 = tiles[3].getLastPlayedBy() + tiles[4].getLastPlayedBy() + tiles[5].getLastPlayedBy();
+        int s4 = tiles[0].getLastPlayedBy() + tiles[4].getLastPlayedBy() + tiles[8].getLastPlayedBy();
+        int s5 = tiles[0].getLastPlayedBy() + tiles[1].getLastPlayedBy() + tiles[2].getLastPlayedBy();
+        int s6 = tiles[0].getLastPlayedBy() + tiles[3].getLastPlayedBy() + tiles[6].getLastPlayedBy();
+        int s7 = tiles[2].getLastPlayedBy() + tiles[5].getLastPlayedBy() + tiles[8].getLastPlayedBy();
+        int s8 = tiles[6].getLastPlayedBy() + tiles[7].getLastPlayedBy() + tiles[8].getLastPlayedBy();
         int[] solutions = {s1 , s2, s3, s4, s5 ,s6, s7, s8};
 
-        for(int i = 0; i < solutions.Length; i++)
+        for (int i = 0; i < solutions.Length; i++)
         {
             if (solutions[i] == 3)
             {
                 gameManager.state = GameState.PLAYER1WON;
+                setMatchLine(i);
                 return;
             }
             else if (solutions[i] == 6)
             {
                 gameManager.state = GameState.PLAYER2WON;
+                setMatchLine(i);
                 return;
             }
         }
@@ -133,5 +136,18 @@ public class GameBoardManager : MonoBehaviour
                 return;
         }
         gameManager.state = GameState.DRAW;
+    }
+
+    void setMatchLine(int pos)
+    {
+        Debug.Log(pos);
+    
+        if (pos < 4)
+        {
+            lines[pos].transform.Rotate(0, 0, pos * 45);
+            lines[pos].SetActive(true);
+        }
+        else
+            lines[pos-3].SetActive(true);
     }
 }

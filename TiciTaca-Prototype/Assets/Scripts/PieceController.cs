@@ -26,17 +26,14 @@ public class PieceController : MonoBehaviour
     public void setSelectedPiece(Piece piece)
     {
         selectedPiece = piece;
+        Debug.Log(selectedPiece);
+
         gameBoardManager.setSelectedPiece(piece);
     }
 
     public int getSelectedPieceValue()
     {
         return selectedPiece.pieceValue;
-    }
-
-    public void resetSelectedPiece()
-    {
-        selectedPiece = null;
     }
 
     public void DisablePieceButton(Piece piece)
@@ -98,5 +95,10 @@ public class PieceController : MonoBehaviour
     private void LowerPieceLeftText()
     {
         selectedPiece.pieceLeftText.text = "x" + selectedPiece.getPieceLeft().ToString();
+    }
+
+    public void resetSelectedPiece()
+    {
+        selectedPiece = null;
     }
 }
