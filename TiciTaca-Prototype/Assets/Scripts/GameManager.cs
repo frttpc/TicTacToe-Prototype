@@ -1,15 +1,14 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public enum GameState
 {
-    PLAYER1TURN,
-    PLAYER2TURN,
+    DRAW,
     PLAYER1WON,
-    PLAYER2WON,
-    DRAW
+    PLAYER2WON, 
+    PLAYER1TURN,
+    PLAYER2TURN
 }
 
 public class GameManager : MonoBehaviour
@@ -19,6 +18,9 @@ public class GameManager : MonoBehaviour
     public GameObject piecePrefab;
     public PieceController player1PieceController;
     public PieceController player2PieceController;
+    public Image player1WinScreen;
+    public Image player2WinScreen;
+    public Image drawScreen;
 
     void Start()
     {
@@ -38,8 +40,9 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(gameBoardManager.PieceIsPlayed); 
         player1PieceController.DisableAllPieceButtons();
 
-        state = GameState.PLAYER2TURN;
-        Player2Turn();
+        if (state == GameState.PLAYER1TURN)
+            state = GameState.PLAYER2TURN;
+        CallFunctionForState();
     }
 
     void Player2Turn()
@@ -54,7 +57,38 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(gameBoardManager.PieceIsPlayed);
         player2PieceController.DisableAllPieceButtons();
 
-        state = GameState.PLAYER1TURN;
-        Player1Turn();
+        if (state == GameState.PLAYER2TURN)
+            state = GameState.PLAYER1TURN;
+        CallFunctionForState();
     }
+
+    void CallFunctionForState()
+    {
+        if (state == GameState.PLAYER1TURN)
+            Player1Turn();
+        else if (state == GameState.PLAYER2TURN)
+            Player2Turn();
+        else if (state == GameState.PLAYER1WON)
+            Player1Won();
+        else if (state == GameState.PLAYER2WON)
+            Player2Won();
+        else
+            Draw();
+    }
+
+    void Player1Won()
+    {
+        player1WinScreen.enabled = true;
+    }
+
+    void Player2Won()
+    {
+        player2WinScreen.enabled = true;
+    }
+
+    void Draw()
+    {
+        drawScreen.enabled = true;
+    }
+
 }

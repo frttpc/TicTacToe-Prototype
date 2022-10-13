@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
     public GameBoardManager gameBoardManager;
-    private int lastPlayedBy;
+    private int lastPlayedBy = -10;
     private int containingValue;
 
     private void OnMouseDown()

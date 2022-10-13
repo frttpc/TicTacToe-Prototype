@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameBoardManager : MonoBehaviour
@@ -11,6 +9,7 @@ public class GameBoardManager : MonoBehaviour
     private PlayedPiece playedPiece;
     private Piece selectedPiece;
     private int whoseTurn;
+    private int turnCount;
     private bool pieceIsPlayed;
 
     void Start()
@@ -34,10 +33,19 @@ public class GameBoardManager : MonoBehaviour
             else
                 CreateSelectedPieceOnClickedTile(tile);
 
-            EditTileOnClick(tile);
+            EditClickedTile(tile);
 
             selectedPieceController.UsePiece();
             selectedPieceController.resetSelectedPiece();
+            turnCount++;
+
+            if(turnCount > 4)
+            {
+                CheckForMatch();
+                if (turnCount > 8)
+                    if(gameManager.state != GameState.PLAYER1WON && gameManager.state != GameState.PLAYER2WON)
+                        CheckForDraw();
+            }
             pieceIsPlayed = true;
         }
     }
@@ -73,7 +81,7 @@ public class GameBoardManager : MonoBehaviour
             return false;
     }
 
-    private void EditTileOnClick(Tile tile)
+    private void EditClickedTile(Tile tile)
     {
         tile.setContainingValue(selectedPiece.pieceValue);
         tile.setLastPlayedBy(whoseTurn);
@@ -92,6 +100,38 @@ public class GameBoardManager : MonoBehaviour
 
     void CheckForMatch()
     {
+        int s1 = tiles[0].getLastPlayedBy() + tiles[1].getLastPlayedBy() + tiles[2].getLastPlayedBy();
+        int s2 = tiles[3].getLastPlayedBy() + tiles[4].getLastPlayedBy() + tiles[5].getLastPlayedBy();
+        int s3 = tiles[6].getLastPlayedBy() + tiles[7].getLastPlayedBy() + tiles[8].getLastPlayedBy();
+        int s4 = tiles[0].getLastPlayedBy() + tiles[3].getLastPlayedBy() + tiles[6].getLastPlayedBy();
+        int s5 = tiles[1].getLastPlayedBy() + tiles[4].getLastPlayedBy() + tiles[7].getLastPlayedBy();
+        int s6 = tiles[2].getLastPlayedBy() + tiles[5].getLastPlayedBy() + tiles[8].getLastPlayedBy();
+        int s7 = tiles[0].getLastPlayedBy() + tiles[4].getLastPlayedBy() + tiles[8].getLastPlayedBy();
+        int s8 = tiles[2].getLastPlayedBy() + tiles[4].getLastPlayedBy() + tiles[6].getLastPlayedBy();
+        int[] solutions = {s1 , s2, s3, s4, s5 ,s6, s7, s8};
 
+        for(int i = 0; i < solutions.Length; i++)
+        {
+            if (solutions[i] == 3)
+            {
+                gameManager.state = GameState.PLAYER1WON;
+                return;
+            }
+            else if (solutions[i] == 6)
+            {
+                gameManager.state = GameState.PLAYER2WON;
+                return;
+            }
+        }
+    }
+
+    void CheckForDraw()
+    {
+        for(int i = 0; i < tiles.Length; i++)
+        {
+            if (tiles[i].getLastPlayedBy() == -10)
+                return;
+        }
+        gameManager.state = GameState.DRAW;
     }
 }
