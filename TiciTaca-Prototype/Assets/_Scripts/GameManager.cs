@@ -18,34 +18,40 @@ public class GameManager : MonoBehaviour
     private GameBoardManager gameBoardManager;
     public GameObject piecePrefab;
     public GameObject matchLinePrefab;
-    public PieceController player1PieceController;
-    public PieceController player2PieceController;
-    public GameObject player1WinScreen;
-    public GameObject player2WinScreen;
-    public GameObject drawScreen;
+    public PieceController[] pieceControllers;
+    public GameObject[] OutcomeScreens;
+    public GameObject[] Canvases;
+    public Color[] PlayerColors;
 
     private void Awake()
     {
         gameBoardManager = gameBoard.GetComponent<GameBoardManager>();
+        pieceControllers[0].pieceColor = PlayerColors[0];
+        pieceControllers[1].pieceColor = PlayerColors[1];
     }
 
-    void Start()
+    public void StartTheGame()
     {
+        Canvases[0].SetActive(false);
+        Canvases[1].SetActive(true);
+
+        gameBoard.SetActive(true);
+
         state = GameState.PLAYER1TURN;
         Player1Turn();
     }
 
     void Player1Turn()
     {
-        gameBoardManager.EditWhoseTurn(1,player1PieceController);
+        gameBoardManager.EditWhoseTurn(1, pieceControllers[0]);
         StartCoroutine(Player1Play());
     }
 
     IEnumerator Player1Play()
     {
-        player1PieceController.EnableAllPieceButtons();
-        yield return new WaitUntil(gameBoardManager.PieceIsPlayed); 
-        player1PieceController.DisableAllPieceButtons();
+        pieceControllers[0].EnableAllPieceButtons();
+        yield return new WaitUntil(gameBoardManager.PieceIsPlayed);
+        pieceControllers[0].DisableAllPieceButtons();
 
         if (state == GameState.PLAYER1TURN)
             state = GameState.PLAYER2TURN;
@@ -54,15 +60,15 @@ public class GameManager : MonoBehaviour
 
     void Player2Turn()
     {
-        gameBoardManager.EditWhoseTurn(2,player2PieceController);
+        gameBoardManager.EditWhoseTurn(2, pieceControllers[1]);
         StartCoroutine(Player2Play());
     }
 
     IEnumerator Player2Play()
     {
-        player2PieceController.EnableAllPieceButtons();
+        pieceControllers[1].EnableAllPieceButtons();
         yield return new WaitUntil(gameBoardManager.PieceIsPlayed);
-        player2PieceController.DisableAllPieceButtons();
+        pieceControllers[1].DisableAllPieceButtons();
 
         if (state == GameState.PLAYER2TURN)
             state = GameState.PLAYER1TURN;
@@ -86,21 +92,57 @@ public class GameManager : MonoBehaviour
     IEnumerator Player1Won()
     {
         yield return new WaitForSeconds(1f);
-        player1WinScreen.SetActive(true);
+        OutcomeScreens[0].SetActive(true);
         gameBoard.SetActive(false);
     }
 
     IEnumerator Player2Won()
     {
         yield return new WaitForSeconds(1f);
-        player2WinScreen.SetActive(true);
+        OutcomeScreens[1].SetActive(true);
         gameBoard.SetActive(false);
     }
 
     IEnumerator Draw()
     {
         yield return new WaitForSeconds(1f);
-        drawScreen.SetActive(true);
+        OutcomeScreens[2].SetActive(true);
+        gameBoard.SetActive(false);
+    }
+
+    public void RestartGame()
+    {
+        if (state == GameState.PLAYER1WON)
+        {
+            OutcomeScreens[0].SetActive(false);
+            state = GameState.PLAYER2TURN;
+        }
+        else if (state == GameState.DRAW)
+        {
+            OutcomeScreens[2].SetActive(false);
+            state = GameState.PLAYER1TURN;
+        }
+        else
+        {
+            OutcomeScreens[1].SetActive(false);
+            state = GameState.PLAYER1TURN;
+        }
+
+        gameBoardManager.ResetGameBoard();
+
+        foreach(PieceController pieceController in pieceControllers)
+        {
+            pieceController.ResetPieces();
+        }
+
+        gameBoard.SetActive(true);
+        CallFunctionForState();
+    }
+
+    public void ReturnToMainMenu()
+    {
+        Canvases[0].SetActive(true);
+        Canvases[1].SetActive(false);
         gameBoard.SetActive(false);
     }
 }

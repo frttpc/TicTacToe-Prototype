@@ -8,26 +8,25 @@ public class PieceController : MonoBehaviour
     public int belongsTo;
     private Piece selectedPiece;
     public Color pieceColor;
+    public int totalPiecesLeft = 6;
 
-    private void Start()
+    void Start()
     {
-        SetPiecesInTheBeginning(pieces);
+        SetPiecesInTheBeginning();
     }
 
-    private void SetPiecesInTheBeginning(Piece[] pieces)
+    private void SetPiecesInTheBeginning()
     {
-        for (int i = 0; i < pieces.Length; i++)
+        foreach (Piece piece in pieces)
         {
-            pieces[i].pieceValueText.text = pieces[i].pieceValue.ToString();
-            setColor(pieces[i]);
+            piece.pieceValueText.text = piece.pieceValue.ToString();
+            setColor(piece);
         }
     }
 
     public void setSelectedPiece(Piece piece)
     {
         selectedPiece = piece;
-        Debug.Log(selectedPiece);
-
         gameBoardManager.setSelectedPiece(piece);
     }
 
@@ -50,21 +49,20 @@ public class PieceController : MonoBehaviour
         piece.pieceLeftText.enabled = true;
     }
 
-
     public void DisableAllPieceButtons()
     {
-        for (int i = 0; i < pieces.Length; i++)
+        foreach (Piece piece in pieces)
         {
-            DisablePieceButton(pieces[i]);
+            DisablePieceButton(piece);
         }
     }
 
     public void EnableAllPieceButtons()
     {
-        for (int i = 0; i < pieces.Length; i++)
+        foreach (Piece piece in pieces)
         {
-            if (PieceIsLeft(pieces[i]))
-                EnablePieceButton(pieces[i]);
+            if (PieceIsLeft(piece))
+                EnablePieceButton(piece);
         }
     }
 
@@ -85,6 +83,7 @@ public class PieceController : MonoBehaviour
         LowerPieceLeft();
         LowerPieceLeftText();
         resetSelectedPiece();
+        totalPiecesLeft--;
     }
 
     private void LowerPieceLeft()
@@ -97,8 +96,22 @@ public class PieceController : MonoBehaviour
         selectedPiece.pieceLeftText.text = "x" + selectedPiece.getPieceLeft().ToString();
     }
 
-    public void resetSelectedPiece()
+    private void resetSelectedPiece()
     {
         selectedPiece = null;
+    }
+
+    public void ResetPieces()
+    {
+        foreach(Piece piece in pieces)
+        {
+            ResetPieceLeftAndText(piece);
+        }
+    }
+
+    private void ResetPieceLeftAndText(Piece piece)
+    {
+        piece.setPieceLeft(2);
+        piece.pieceLeftText.text = "x2";
     }
 }
