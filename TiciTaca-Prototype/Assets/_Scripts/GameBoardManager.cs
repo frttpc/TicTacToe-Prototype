@@ -1,12 +1,15 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class GameBoardManager : MonoBehaviour
 {
     public GameManager gameManager;
     public Tile[] tiles;
     public GameObject[] lines;
+    public GameObject activeLine;
     private PieceController selectedPieceController;
     private GameObject piecePrefab;
+    private List<GameObject> playedPiecesList;
     private PlayedPiece playedPiece;
     private Piece selectedPiece;
     private int whoseTurn;
@@ -17,6 +20,7 @@ public class GameBoardManager : MonoBehaviour
     {
         piecePrefab = gameManager.piecePrefab;
         playedPiece = piecePrefab.GetComponent<PlayedPiece>();
+        playedPiecesList = new List<GameObject>();
 
         pieceIsPlayed = false;
     }
@@ -33,6 +37,7 @@ public class GameBoardManager : MonoBehaviour
                 EditPlayedPiece(tile);
             else
                 CreateSelectedPieceOnClickedTile(tile);
+            
 
             EditClickedTile(tile);
 
@@ -68,7 +73,9 @@ public class GameBoardManager : MonoBehaviour
     {
         playedPiece.setValueText(selectedPiece.pieceValue);
         playedPiece.ChangeColor(selectedPieceController.pieceColor);
-        Instantiate(piecePrefab, tile.transform);
+
+        GameObject newPiece = Instantiate(piecePrefab, tile.transform);
+        playedPiecesList.Add(newPiece);
     }
 
     public bool PieceIsPlayed()
@@ -130,9 +137,9 @@ public class GameBoardManager : MonoBehaviour
 
     void CheckForDraw()
     {
-        for(int i = 0; i < tiles.Length; i++)
+        foreach(Tile tile in tiles)
         {
-            if (tiles[i].getLastPlayedBy() == -10)
+            if (tile.getLastPlayedBy() == -10)
                 return;
         }
         gameManager.state = GameState.DRAW;
@@ -140,14 +147,35 @@ public class GameBoardManager : MonoBehaviour
 
     void setMatchLine(int pos)
     {
-        Debug.Log(pos);
-    
         if (pos < 4)
         {
-            lines[pos].transform.Rotate(0, 0, pos * 45);
-            lines[pos].SetActive(true);
+            lines[0].transform.Rotate(0, 0, -pos * 45);
+            lines[0].SetActive(true);
+            activeLine = lines[0];
         }
         else
+        {
             lines[pos-3].SetActive(true);
+            activeLine = lines[pos - 3];
+        }
+    }
+
+    public void ResetGameBoard()
+    {
+        foreach(Tile tile in tiles)
+        {
+            ResetTile(tile);
+        }
+        foreach(GameObject playedPiece in playedPiecesList)
+        {
+            Destroy(playedPiece);
+        }
+        activeLine.SetActive(false);
+    }
+
+    private void ResetTile(Tile tile)
+    {
+        tile.setLastPlayedBy(-10);
+        tile.setContainingValue(0);
     }
 }
