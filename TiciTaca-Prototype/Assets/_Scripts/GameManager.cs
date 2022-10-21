@@ -16,8 +16,6 @@ public class GameManager : MonoBehaviour
     public GameState state;
     public GameObject gameBoard;
     private GameBoardManager gameBoardManager;
-    public GameObject piecePrefab;
-    public GameObject matchLinePrefab;
     public PieceController[] pieceControllers;
     public GameObject[] OutcomeScreens;
     public GameObject[] Canvases;

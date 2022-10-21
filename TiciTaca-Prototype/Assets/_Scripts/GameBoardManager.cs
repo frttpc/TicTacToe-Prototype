@@ -6,11 +6,10 @@ public class GameBoardManager : MonoBehaviour
     public GameManager gameManager;
     public Tile[] tiles;
     public GameObject[] lines;
-    public GameObject activeLine;
+    [HideInInspector]public GameObject activeLine;
     private PieceController selectedPieceController;
     private GameObject piecePrefab;
     private List<GameObject> playedPiecesList;
-    private PlayedPiece playedPiece;
     private Piece selectedPiece;
     private int whoseTurn;
     private int turnCount;
@@ -18,8 +17,6 @@ public class GameBoardManager : MonoBehaviour
 
     void Start()
     {
-        piecePrefab = gameManager.piecePrefab;
-        playedPiece = piecePrefab.GetComponent<PlayedPiece>();
         playedPiecesList = new List<GameObject>();
 
         pieceIsPlayed = false;
@@ -58,8 +55,7 @@ public class GameBoardManager : MonoBehaviour
 
     private void EditPlayedPiece(Tile tile)
     {
-        tile.setContainingPlayedPieceValue(selectedPiece.pieceValue);
-        tile.setContainingPlayedPieceColor(selectedPieceController.pieceColor);
+        tile.setContainingPieceColor(selectedPieceController.pieceColor);
     }
 
     private bool SelectedPieceValueIsBiggerThanContainingValue(Tile tile)
@@ -71,9 +67,6 @@ public class GameBoardManager : MonoBehaviour
 
     public void CreateSelectedPieceOnClickedTile(Tile tile)
     {
-        playedPiece.setValueText(selectedPiece.pieceValue);
-        playedPiece.ChangeColor(selectedPieceController.pieceColor);
-
         GameObject newPiece = Instantiate(piecePrefab, tile.transform);
         playedPiecesList.Add(newPiece);
     }

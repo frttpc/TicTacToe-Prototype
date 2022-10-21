@@ -6,11 +6,6 @@ public class Tile : MonoBehaviour
     private int lastPlayedBy = -10;
     private int containingValue;
 
-    private void OnMouseDown()
-    {
-        gameBoardManager.ClickedTile(this);
-    }
-
     public void setContainingValue(int value)
     {
         containingValue = value;
@@ -21,14 +16,9 @@ public class Tile : MonoBehaviour
         return containingValue;
     }
 
-    public void setContainingPlayedPieceValue(int value)
+    public void setContainingPieceColor(Color color)
     {
-        transform.GetChild(0).GetComponent<PlayedPiece>().setValueText(value);
-    }
 
-    public void setContainingPlayedPieceColor(Color color)
-    {
-        transform.GetChild(0).GetComponent<PlayedPiece>().ChangeColor(color);
     }
 
     public void setLastPlayedBy(int playedBy)
