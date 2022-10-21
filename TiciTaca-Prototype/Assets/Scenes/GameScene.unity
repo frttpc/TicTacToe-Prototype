@@ -1719,7 +1719,7 @@ GameObject:
   - component: {fileID: 915730988814623757}
   - component: {fileID: 5043991216952358429}
   m_Layer: 5
-  m_Name: Piece Button 3
+  m_Name: Piece Button 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1767,7 +1767,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 66ac386acae6a9843b1b7b3f01992399, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 76a6a7bf835fbe748b08ff00c2020f71, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5977,7 +5977,7 @@ MonoBehaviour:
   image: {fileID: 850230824}
   pieceValueText: {fileID: 1442999549}
   pieceLeftText: {fileID: 3543388718480170961}
-  pieceValue: 3
+  pieceValue: 1
 --- !u!114 &1709084965403022821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5994,7 +5994,7 @@ MonoBehaviour:
   image: {fileID: 1946320038021517248}
   pieceValueText: {fileID: 1946320038496591125}
   pieceLeftText: {fileID: 3039387169785458233}
-  pieceValue: 1
+  pieceValue: 3
 --- !u!114 &1709084965905570740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6011,7 +6011,7 @@ MonoBehaviour:
   image: {fileID: 1946320037450252689}
   pieceValueText: {fileID: 1946320039134991172}
   pieceLeftText: {fileID: 3039387170289541224}
-  pieceValue: 3
+  pieceValue: 1
 --- !u!114 &1709084966027329326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6062,7 +6062,7 @@ MonoBehaviour:
   image: {fileID: 1946320038362862813}
   pieceValueText: {fileID: 1946320037886871048}
   pieceLeftText: {fileID: 3039387171453252900}
-  pieceValue: 1
+  pieceValue: 3
 --- !u!224 &1946320037320418564
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6134,7 +6134,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 66ac386acae6a9843b1b7b3f01992399, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 32542ea2381395c4082bbb6c08981636, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6300,7 +6300,7 @@ GameObject:
   - component: {fileID: 1709084965905570740}
   - component: {fileID: 6844746350806780324}
   m_Layer: 5
-  m_Name: Piece Button 3
+  m_Name: Piece Button 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6494,7 +6494,7 @@ GameObject:
   - component: {fileID: 1709084965403022821}
   - component: {fileID: 6844746351443478517}
   m_Layer: 5
-  m_Name: Piece Button 1
+  m_Name: Piece Button 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6559,7 +6559,7 @@ GameObject:
   - component: {fileID: 1709084967073894136}
   - component: {fileID: 6844746352322682088}
   m_Layer: 5
-  m_Name: Piece Button 1
+  m_Name: Piece Button 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6593,7 +6593,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 66ac386acae6a9843b1b7b3f01992399, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 34db58c5d4268dc4a89233ff029ed91c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
