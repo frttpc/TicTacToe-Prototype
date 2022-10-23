@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class GameBoardManager : MonoBehaviour
@@ -6,38 +7,22 @@ public class GameBoardManager : MonoBehaviour
     public GameManager gameManager;
     public Tile[] tiles;
     public GameObject[] lines;
-    [HideInInspector]public GameObject activeLine;
+    private GameObject matchLine;
     private PieceController selectedPieceController;
-    private GameObject piecePrefab;
-    private List<GameObject> playedPiecesList;
     private Piece selectedPiece;
     private int whoseTurn;
     private int turnCount;
-    private bool pieceIsPlayed;
-
-    void Start()
-    {
-        playedPiecesList = new List<GameObject>();
-
-        pieceIsPlayed = false;
-    }
+    private bool pieceIsPlayed = false;
 
     public void ClickedTile(Tile tile)
     {
-        if (selectedPiece == null)
-            Debug.Log("Didn't select a piece to play");
-        else if(!SelectedPieceValueIsBiggerThanContainingValue(tile))
+        if (!canGetSelectedPieceFromPieceController())
+            Debug.Log("Please select a piece to play");
+        else if(!isSelectedPieceValueIsBiggerThanContainingValue(tile))
             Debug.Log("Cannot put piece there!");
         else
         {
-            if (tile.getContainingValue() > 0)
-                EditPlayedPiece(tile);
-            else
-                CreateSelectedPieceOnClickedTile(tile);
-            
-
             EditClickedTile(tile);
-
             selectedPieceController.UsePiece();
             turnCount++;
 
@@ -53,22 +38,11 @@ public class GameBoardManager : MonoBehaviour
         }
     }
 
-    private void EditPlayedPiece(Tile tile)
-    {
-        tile.setContainingPieceColor(selectedPieceController.pieceColor);
-    }
-
-    private bool SelectedPieceValueIsBiggerThanContainingValue(Tile tile)
+    private bool isSelectedPieceValueIsBiggerThanContainingValue(Tile tile)
     {
         if (selectedPiece.pieceValue > tile.getContainingValue())
             return true;
         return false;
-    }
-
-    public void CreateSelectedPieceOnClickedTile(Tile tile)
-    {
-        GameObject newPiece = Instantiate(piecePrefab, tile.transform);
-        playedPiecesList.Add(newPiece);
     }
 
     public bool PieceIsPlayed()
@@ -86,6 +60,8 @@ public class GameBoardManager : MonoBehaviour
     {
         tile.setContainingValue(selectedPiece.pieceValue);
         tile.setLastPlayedBy(whoseTurn);
+        tile.image.sprite = selectedPiece.image.sprite;
+        tile.image.color = selectedPieceController.getPlayerColor();
     }
 
     public void EditWhoseTurn(int turnOfPlayer, PieceController pieceController)
@@ -94,9 +70,12 @@ public class GameBoardManager : MonoBehaviour
         selectedPieceController = pieceController;
     }
 
-    public void setSelectedPiece(Piece piece)
+    public bool canGetSelectedPieceFromPieceController()
     {
-        selectedPiece = piece;
+        selectedPiece = selectedPieceController.getSelectedPiece();
+        if (selectedPiece)
+            return true;
+        return false;
     }
 
     void CheckForMatch()
@@ -130,9 +109,10 @@ public class GameBoardManager : MonoBehaviour
 
     void CheckForDraw()
     {
-        foreach(Tile tile in tiles)
+        int num = selectedPieceController.totalPiecesLeft;
+        foreach (Tile tile in tiles)
         {
-            if (tile.getLastPlayedBy() == -10)
+            if (tile.getLastPlayedBy() == -10 && num > 0)
                 return;
         }
         gameManager.state = GameState.DRAW;
@@ -144,12 +124,12 @@ public class GameBoardManager : MonoBehaviour
         {
             lines[0].transform.Rotate(0, 0, -pos * 45);
             lines[0].SetActive(true);
-            activeLine = lines[0];
+            matchLine = lines[0];
         }
         else
         {
             lines[pos-3].SetActive(true);
-            activeLine = lines[pos - 3];
+            matchLine = lines[pos - 3];
         }
     }
 
@@ -159,16 +139,18 @@ public class GameBoardManager : MonoBehaviour
         {
             ResetTile(tile);
         }
-        foreach(GameObject playedPiece in playedPiecesList)
-        {
-            Destroy(playedPiece);
-        }
-        activeLine.SetActive(false);
+        matchLine.SetActive(false);
     }
 
     private void ResetTile(Tile tile)
     {
         tile.setLastPlayedBy(-10);
         tile.setContainingValue(0);
+        tile.image = null;
+    }
+
+    public void ResetMacthline()
+    {
+        matchLine.SetActive(false);
     }
 }

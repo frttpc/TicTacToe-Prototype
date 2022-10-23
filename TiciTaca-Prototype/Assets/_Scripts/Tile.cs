@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Tile : MonoBehaviour
 {
     public GameBoardManager gameBoardManager;
+    public Image image;
     private int lastPlayedBy = -10;
     private int containingValue;
 
@@ -18,7 +20,7 @@ public class Tile : MonoBehaviour
 
     public void setContainingPieceColor(Color color)
     {
-
+        image.color = color;
     }
 
     public void setLastPlayedBy(int playedBy)

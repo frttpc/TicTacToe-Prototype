@@ -19,16 +19,16 @@ public class GameManager : MonoBehaviour
     public PieceController[] pieceControllers;
     public GameObject[] OutcomeScreens;
     public GameObject[] Canvases;
-    public Color[] PlayerColors;
+    public ColorBlock[] PlayerColors;
 
     private void Awake()
     {
         gameBoardManager = gameBoard.GetComponent<GameBoardManager>();
-        pieceControllers[0].pieceColor = PlayerColors[0];
-        pieceControllers[1].pieceColor = PlayerColors[1];
+        pieceControllers[0].setPlayerColor(PlayerColors[0].normalColor);
+        pieceControllers[1].setPlayerColor(PlayerColors[1].normalColor);
     }
 
-    public void StartTheGame()
+    public void Start()
     {
         Canvases[0].SetActive(false);
         Canvases[1].SetActive(true);
@@ -90,6 +90,7 @@ public class GameManager : MonoBehaviour
     IEnumerator Player1Won()
     {
         yield return new WaitForSeconds(1f);
+        gameBoardManager.ResetMacthline();
         OutcomeScreens[0].SetActive(true);
         gameBoard.SetActive(false);
     }
@@ -97,6 +98,7 @@ public class GameManager : MonoBehaviour
     IEnumerator Player2Won()
     {
         yield return new WaitForSeconds(1f);
+        gameBoardManager.ResetMacthline();
         OutcomeScreens[1].SetActive(true);
         gameBoard.SetActive(false);
     }

@@ -6,7 +6,6 @@ public class Piece : MonoBehaviour
 {
     public Button button;
     public Image image;
-    public TextMeshProUGUI pieceValueText;
     public TextMeshProUGUI pieceLeftText;
     public int pieceValue;
     private int pieceLeft = 2;

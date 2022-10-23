@@ -5,48 +5,41 @@ public class PieceController : MonoBehaviour
     public GameManager gameManager;
     public GameBoardManager gameBoardManager;
     public Piece[] pieces;
-    public int belongsTo;
     private Piece selectedPiece;
-    public Color pieceColor;
+    private Color playerColor;
     public int totalPiecesLeft = 6;
 
     void Start()
     {
-        SetPiecesInTheBeginning();
+        //SetPieceColorsInTheBeginning();
     }
 
-    private void SetPiecesInTheBeginning()
+    private void SetPieceColorsInTheBeginning()
     {
         foreach (Piece piece in pieces)
         {
-            piece.pieceValueText.text = piece.pieceValue.ToString();
-            setColor(piece);
+            setPieceColor(piece);
         }
     }
 
     public void setSelectedPiece(Piece piece)
     {
         selectedPiece = piece;
-        gameBoardManager.setSelectedPiece(piece);
     }
 
-    public int getSelectedPieceValue()
+    public Piece getSelectedPiece()
     {
-        return selectedPiece.pieceValue;
+        return selectedPiece;
     }
 
     public void DisablePieceButton(Piece piece)
     {
         piece.button.interactable = false;
-        piece.pieceValueText.enabled = false;
-        piece.pieceLeftText.enabled = false;
     }
 
     public void EnablePieceButton(Piece piece)
     {
         piece.button.interactable = true;
-        piece.pieceValueText.enabled = true;
-        piece.pieceLeftText.enabled = true;
     }
 
     public void DisableAllPieceButtons()
@@ -71,11 +64,6 @@ public class PieceController : MonoBehaviour
         if(piece.getPieceLeft() != 0)
             return true;
         return false;
-    }
-
-    public void setColor(Piece piece)
-    {
-        piece.image.color = pieceColor;
     }
 
     public void UsePiece()
@@ -113,5 +101,20 @@ public class PieceController : MonoBehaviour
     {
         piece.setPieceLeft(2);
         piece.pieceLeftText.text = "x2";
+    }
+
+    public void setPlayerColor(Color color)
+    {
+        playerColor = color;
+    }
+
+    public Color getPlayerColor()
+    {
+        return playerColor;
+    }
+
+    public void setPieceColor(Piece piece)
+    {
+        piece.image.color = playerColor; /// NOT THE IMAGE BUT BUTTON COLORS
     }
 }
