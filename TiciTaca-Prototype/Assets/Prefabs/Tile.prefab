@@ -99,11 +99,11 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.07058824}
-    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 0.31764707}
-    m_PressedColor: {r: 1, g: 1, b: 1, a: 0.5882353}
-    m_SelectedColor: {r: 1, g: 1, b: 1, a: 0.33333334}
-    m_DisabledColor: {r: 1, g: 0, b: 0, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 1, g: 0, b: 0, a: 0.3137255}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -134,6 +134,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11500000, guid: c5c0a2479e05b1e498de95f6d9182020, type: 3}
+        m_TargetAssemblyTypeName: GameBoardManager, Assembly-CSharp
+        m_MethodName: ClickedTile
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: -5678840942274250767}
+          m_ObjectArgumentAssemblyTypeName: Tile, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &-5678840942274250767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,5 +158,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0f2206735dbf054396b449cdc8bf294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameBoardManager: {fileID: 0}
   image: {fileID: 2625311724013086866}
+  button: {fileID: 2625311724013086867}

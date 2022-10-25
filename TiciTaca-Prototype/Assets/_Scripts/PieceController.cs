@@ -9,17 +9,17 @@ public class PieceController : MonoBehaviour
     private Color playerColor;
     public int totalPiecesLeft = 6;
 
-    void Start()
-    {
-        //SetPieceColorsInTheBeginning();
-    }
-
     private void SetPieceColorsInTheBeginning()
     {
         foreach (Piece piece in pieces)
         {
             setPieceColor(piece);
         }
+    }
+
+    public void setPieceColor(Piece piece)
+    {
+        piece.image.color = playerColor; /// NOT THE IMAGE BUT BUTTON COLORS
     }
 
     public void setSelectedPiece(Piece piece)
@@ -95,6 +95,7 @@ public class PieceController : MonoBehaviour
         {
             ResetPieceLeftAndText(piece);
         }
+        resetSelectedPiece();
     }
 
     private void ResetPieceLeftAndText(Piece piece)
@@ -113,8 +114,4 @@ public class PieceController : MonoBehaviour
         return playerColor;
     }
 
-    public void setPieceColor(Piece piece)
-    {
-        piece.image.color = playerColor; /// NOT THE IMAGE BUT BUTTON COLORS
-    }
 }

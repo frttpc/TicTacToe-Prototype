@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class Tile : MonoBehaviour
 {
-    public GameBoardManager gameBoardManager;
     public Image image;
+    public Button button;
     private int lastPlayedBy = -10;
     private int containingValue;
 

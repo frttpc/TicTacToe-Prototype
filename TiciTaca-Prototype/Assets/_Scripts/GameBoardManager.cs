@@ -7,12 +7,21 @@ public class GameBoardManager : MonoBehaviour
     public GameManager gameManager;
     public Tile[] tiles;
     public GameObject[] lines;
+    private List<Tile> playedTiles;
+    private ColorBlock defaultColors;
     private GameObject matchLine;
     private PieceController selectedPieceController;
+    private Color selectedPlayerColor;
     private Piece selectedPiece;
     private int whoseTurn;
     private int turnCount;
     private bool pieceIsPlayed = false;
+
+    private void Awake()
+    {
+        playedTiles = new List<Tile>();
+        defaultColors = GetComponentInChildren<Button>().colors;
+    }
 
     public void ClickedTile(Tile tile)
     {
@@ -23,6 +32,7 @@ public class GameBoardManager : MonoBehaviour
         else
         {
             EditClickedTile(tile);
+            playedTiles.Add(tile);
             selectedPieceController.UsePiece();
             turnCount++;
 
@@ -61,13 +71,14 @@ public class GameBoardManager : MonoBehaviour
         tile.setContainingValue(selectedPiece.pieceValue);
         tile.setLastPlayedBy(whoseTurn);
         tile.image.sprite = selectedPiece.image.sprite;
-        tile.image.color = selectedPieceController.getPlayerColor();
+        ChangeButtonColors(tile);
     }
 
     public void EditWhoseTurn(int turnOfPlayer, PieceController pieceController)
     {
         whoseTurn = turnOfPlayer;
         selectedPieceController = pieceController;
+        selectedPlayerColor = selectedPieceController.getPlayerColor();
     }
 
     public bool canGetSelectedPieceFromPieceController()
@@ -89,8 +100,9 @@ public class GameBoardManager : MonoBehaviour
         int s7 = tiles[2].getLastPlayedBy() + tiles[5].getLastPlayedBy() + tiles[8].getLastPlayedBy();
         int s8 = tiles[6].getLastPlayedBy() + tiles[7].getLastPlayedBy() + tiles[8].getLastPlayedBy();
         int[] solutions = {s1 , s2, s3, s4, s5 ,s6, s7, s8};
+        int length = solutions.Length;
 
-        for (int i = 0; i < solutions.Length; i++)
+        for (int i = 0; i < length; i++)
         {
             if (solutions[i] == 3)
             {
@@ -135,22 +147,35 @@ public class GameBoardManager : MonoBehaviour
 
     public void ResetGameBoard()
     {
-        foreach(Tile tile in tiles)
+        foreach(Tile tile in playedTiles)
         {
             ResetTile(tile);
         }
-        matchLine.SetActive(false);
+        if(matchLine) matchLine.SetActive(false);
     }
 
     private void ResetTile(Tile tile)
     {
+        tile.image.sprite = null;
+        tile.button.colors = defaultColors;
         tile.setLastPlayedBy(-10);
         tile.setContainingValue(0);
-        tile.image = null;
     }
 
     public void ResetMacthline()
     {
         matchLine.SetActive(false);
     }
+
+    public void ChangeButtonColors(Tile tile)
+    {
+        ColorBlock colors = tile.button.colors;
+
+        colors.normalColor = selectedPlayerColor;
+        colors.selectedColor = selectedPlayerColor;
+        colors.disabledColor = selectedPlayerColor;
+
+        tile.button.colors = colors;
+    }
+
 }

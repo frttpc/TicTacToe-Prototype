@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
         pieceControllers[1].setPlayerColor(PlayerColors[1].normalColor);
     }
 
-    public void Start()
+    public void StartTheGame()
     {
         Canvases[0].SetActive(false);
         Canvases[1].SetActive(true);
@@ -109,6 +109,7 @@ public class GameManager : MonoBehaviour
         OutcomeScreens[2].SetActive(true);
         gameBoard.SetActive(false);
     }
+
 
     public void RestartGame()
     {
